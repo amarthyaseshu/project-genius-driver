@@ -1,0 +1,76 @@
+/* This style sheet is for background and car animation */
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* FOR DISPLAYING THE BACKGROUND(SKY) */
+
+.background {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url(./assests/sky3.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* FOR DISPLAYING THE ROAD */
+
+#road {
+  position: absolute;
+  height: 150px;
+  width: 500%;
+  display: block;
+  background-image: url(./assests/road.jpg);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-repeat: repeat-x;
+  animation: road 2.5s linear infinite;
+  animation-play-state: paused;
+}
+
+/* FOR MOVING THE ROAD IN LEFT DIRECTION */
+
+@keyframes road {
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+
+/* FOR DISPLAYING THE CITY */
+
+#city {
+  position: absolute;
+  height: 250px;
+  width: 550%;
+  background-image: url(./assests/citynew.png);
+  bottom: 150px;
+  left: 0;
+  right: 0;
+  display: block;
+  background-repeat: repeat-x;
+  animation: city 15s linear infinite;
+  animation-play-state: paused;
+}
+
+/* FOR MOVING THE CITY IN LEFT DIRECTION */
+
+@keyframes city {
+  100% {
+    transform: translateX(-900px);
+  }
+}
+
+/* FOR DISPLAYING THE Car */
+
+.car {
+  position: absolute;
+  width: 275px;
+  left: 20%;
+  bottom: 55px;
+  transform: translateX(-50%);
+}

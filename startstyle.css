@@ -1,0 +1,49 @@
+/* This style sheet is for showing the starting page of game */
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.start_ {
+    height: 100vh;
+    width: 100%;
+    background-image: url(./assests/front4.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+}
+
+div>p {
+    padding: 90px;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+    color: orange;
+}
+
+#button {
+    display: inline-block;
+    width: 175px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 7px;
+    margin-left: 53em;
+    margin-top: 23em;
+}
+
+#button:hover {
+    border: 2px solid green;
+    font-weight: bold;
+}
+
+#link {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+
+}

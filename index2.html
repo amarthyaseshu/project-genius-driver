@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Game</title>
+  <link rel="stylesheet" href="caranimationstyle2.css" />
+  <link rel="stylesheet" href="quizstyle.css" />
+</head>
+
+<body>
+  <!-- car animation -->
+  <div class="background">
+    <div id="road"></div>
+    <div id="city"></div>
+    <div class="car">
+      <img src="./assests/carlevel2.png" alt="car" width="100%" />
+      <audio id="carsound" src="./assests/carsound2.wav" preload="auto"></audio>
+    </div>
+
+    <!-- quiz box generation -->
+
+    <!-- (contains the quiz box) -->
+    <div id="container">
+      <!-- (Display the start page of quiz)     -->
+      <div id="start">Congo You Cleared level1 (Try Reaching Home)</div>
+      <!-- (quiz starts)     -->
+      <div id="quiz" style="display: none;">
+        <!-- (display question) -->
+        <div id="question"></div>
+        <!-- (display the choices) -->
+        <div id="choices">
+          <div class="choice" id="A" onclick="checkOption('A')"></div>
+          <div class="choice" id="B" onclick="checkOption('B')"></div>
+        </div>
+        <!-- (display the timer) -->
+        <div id="counter"></div>
+        <!-- (display correct or wrong) -->
+        <div id="progress"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="app2.js"></script>
+
+</html>

@@ -1,0 +1,49 @@
+/* This style sheet is for showing the ending page of game */
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.end {
+    height: 100vh;
+    width: 100%;
+    background-image: url(./assests/front5.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+}
+
+div>p {
+    padding: 80px;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+    color: yellow;
+}
+
+#button_ {
+    display: inline-block;
+    width: 175px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 7px;
+    margin-left: 53em;
+    margin-top: 23em;
+}
+
+#button_:hover {
+    border: 2px solid green;
+    font-weight: bold;
+}
+
+#link_ {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+
+}
