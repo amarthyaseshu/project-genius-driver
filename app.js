@@ -96,7 +96,7 @@ let questions = [{
 const lastQuestion = questions.length - 1;
 let presentQuestion = 0;
 let count = 0;
-const questionTime = 5; // we have 5sec time to answer
+const questionTime = 10; // we have 5sec time to answer
 let timer;
 let score = 0;
 
