@@ -1,76 +1,202 @@
-/* This style sheet is for background and car animation */
+/* Responsive style sheet for background and car animation */
 
 * {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* FOR DISPLAYING THE BACKGROUND(SKY) */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
 
+/* Background styling */
 .background {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-image: url(./assests/sky3.jpeg);
-  background-size: cover;
-  background-position: center;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url(./assests/sky3.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect on larger screens */
 }
 
-/* FOR DISPLAYING THE ROAD */
-
+/* Road styling - responsive */
 #road {
-  position: absolute;
-  height: 150px;
-  width: 500%;
-  display: block;
-  background-image: url(./assests/road.jpg);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-repeat: repeat-x;
-  animation: road 2.5s linear infinite;
-  animation-play-state: paused;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background-image: url(./assests/road.jpg);
+    background-repeat: repeat-x;
+    background-size: auto 100%; /* Maintain aspect ratio */
+    animation: road 2.5s linear infinite;
+    animation-play-state: paused;
+
+    /* Responsive height */
+    height: clamp(80px, 15vh, 150px);
+    width: 500%;
 }
 
-/* FOR MOVING THE ROAD IN LEFT DIRECTION */
-
+/* Responsive road animation */
 @keyframes road {
-  100% {
-    transform: translateX(-2000px);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(min(-2000px, -50vw));
+    }
 }
 
-/* FOR DISPLAYING THE CITY */
-
+/* City styling - responsive */
 #city {
-  position: absolute;
-  height: 250px;
-  width: 550%;
-  background-image: url(./assests/citynew.png);
-  bottom: 150px;
-  left: 0;
-  right: 0;
-  display: block;
-  background-repeat: repeat-x;
-  animation: city 15s linear infinite;
-  animation-play-state: paused;
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    background-image: url(./assests/citynew.png);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    animation: city 15s linear infinite;
+    animation-play-state: paused;
+
+    /* Responsive positioning and sizing */
+    height: clamp(120px, 25vh, 250px);
+    bottom: clamp(80px, 15vh, 150px); /* Above the road */
+    width: 550%;
 }
 
-/* FOR MOVING THE CITY IN LEFT DIRECTION */
-
+/* Responsive city animation */
 @keyframes city {
-  100% {
-    transform: translateX(-900px);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(min(-900px, -30vw));
+    }
 }
 
-/* FOR DISPLAYING THE Car */
-
+/* Car styling - responsive */
 .car {
-  position: absolute;
-  width: 275px;
-  left: 20%;
-  bottom: 55px;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 20%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    /* Responsive sizing and positioning */
+    width: clamp(150px, 25vw, 275px);
+    bottom: clamp(35px, 8vh, 55px); /* Above the road */
+}
+
+.car img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Media Queries for fine-tuning */
+
+/* Small mobile devices */
+@media (max-width: 575.98px) {
+    .background {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+
+    #road {
+        height: clamp(60px, 12vh, 100px);
+    }
+
+    #city {
+        height: clamp(80px, 20vh, 150px);
+        bottom: clamp(60px, 12vh, 100px);
+    }
+
+    .car {
+        width: clamp(120px, 30vw, 200px);
+        bottom: clamp(25px, 6vh, 40px);
+        left: 15%; /* Slightly more to the left on mobile */
+    }
+
+    /* Faster animations for mobile */
+    #road {
+        animation-duration: 2s;
+    }
+
+    #city {
+        animation-duration: 12s;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .car {
+        width: clamp(200px, 22vw, 250px);
+        bottom: clamp(40px, 7vh, 50px);
+    }
+
+    #road {
+        height: clamp(100px, 14vh, 130px);
+    }
+
+    #city {
+        height: clamp(150px, 23vh, 200px);
+        bottom: clamp(100px, 14vh, 130px);
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1024px) {
+    .background {
+        background-attachment: fixed; /* Parallax effect */
+    }
+
+    /* Original values work well on desktop */
+    .car {
+        width: clamp(250px, 20vw, 275px);
+        bottom: clamp(50px, 7vh, 55px);
+    }
+
+    #road {
+        height: clamp(120px, 12vh, 150px);
+    }
+
+    #city {
+        height: clamp(200px, 20vh, 250px);
+        bottom: clamp(120px, 12vh, 150px);
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (orientation: landscape) and (max-height: 600px) {
+    .car {
+        width: clamp(100px, 20vh, 200px);
+        bottom: clamp(20px, 5vh, 35px);
+    }
+
+    #road {
+        height: clamp(40px, 10vh, 80px);
+    }
+
+    #city {
+        height: clamp(60px, 15vh, 120px);
+        bottom: clamp(40px, 10vh, 80px);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .background {
+        background-image: url(./assests/sky3.jpeg);
+        /* Add higher resolution background if available */
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #road, #city {
+        animation-duration: 10s; /* Slower animations */
+    }
 }

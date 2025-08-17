@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4285f4">
+
     <title>Final Game</title>
+
+    <!-- UPDATED: Use responsive CSS files -->
     <link rel="stylesheet" href="caranimationstyle.css" />
     <link rel="stylesheet" href="quizstyle.css" />
 </head>
@@ -20,28 +23,29 @@
         </div>
 
         <!-- quiz box generation -->
-
-        <!-- (contains the quiz box) -->
         <div id="container">
-            <!-- (Display the start page of quiz)     -->
+            <!-- Display the start page of quiz -->
             <div id="start">Lets Go-Level1 <br> (Try Reaching Level2)</div>
-            <!-- (quiz starts (quiz block))     -->
+
+            <!-- quiz starts (quiz block) -->
             <div id="quiz" style="display: none;">
-                <!-- (display question) -->
+                <!-- display question -->
                 <div id="question"></div>
-                <!-- (display the choices) -->
+
+                <!-- display the choices -->
                 <div id="choices">
                     <div class="choice" id="A" onclick="checkOption('A')"></div>
                     <div class="choice" id="B" onclick="checkOption('B')"></div>
                 </div>
-                <!-- (display the timer) -->
+
+                <!-- display the timer -->
                 <div id="counter"></div>
-                <!-- (display correct or wrong) -->
+
+                <!-- display correct or wrong -->
                 <div id="progress"></div>
             </div>
         </div>
     </div>
 </body>
 <script src="app.js"></script>
-
 </html>

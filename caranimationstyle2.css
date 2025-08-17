@@ -1,13 +1,18 @@
-/* This style sheet is for background and car animation */
+/* Responsive style sheet for background and car animation - Level 2 */
 
 * {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-/* FOR DISPLAYING THE BACKGROUND(SKY) */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
 
+/* Background styling */
 .background {
     position: relative;
     height: 100vh;
@@ -15,64 +20,198 @@
     background-image: url(./assests/skylevel2.png);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* Parallax effect on larger screens */
 }
 
-/* FOR DISPLAYING THE ROAD */
-
+/* Road styling - responsive */
 #road {
     position: absolute;
-    height: 150px;
-    width: 500%;
-    display: block;
-    background-image: url(./assests/road.jpg);
     bottom: 0;
     left: 0;
     right: 0;
+    display: block;
+    background-image: url(./assests/road.jpg);
     background-repeat: repeat-x;
+    background-size: auto 100%;
     animation: road 2.5s linear infinite;
     animation-play-state: paused;
 
+    /* Responsive height */
+    height: clamp(80px, 15vh, 150px);
+    width: 500%;
 }
 
-/* FOR MOVING THE ROAD IN LEFT DIRECTION */
-
+/* Level 2 road animation - slightly faster/different */
 @keyframes road {
+    0% {
+        transform: translateX(0);
+    }
     100% {
-        transform: translateX(-2600px);
+        transform: translateX(min(-2600px, -60vw)); /* Level 2 has faster/longer movement */
     }
 }
 
-/* FOR DISPLAYING THE CITY */
-
+/* City styling - responsive */
 #city {
     position: absolute;
-    height: 250px;
-    width: 550%;
-    background-image: url(./assests/citylast.png);
-    bottom: 150px;
     left: 0;
     right: 0;
     display: block;
+    background-image: url(./assests/citylast.png);
     background-repeat: repeat-x;
+    background-size: auto 100%;
     animation: city 15s linear infinite;
     animation-play-state: paused;
+
+    /* Responsive positioning and sizing */
+    height: clamp(120px, 25vh, 250px);
+    bottom: clamp(80px, 15vh, 150px);
+    width: 550%;
 }
 
-/* FOR MOVING THE CITY IN LEFT DIRECTION */
-
+/* Level 2 city animation */
 @keyframes city {
+    0% {
+        transform: translateX(0);
+    }
     100% {
-        transform: translateX(-1000px);
+        transform: translateX(min(-1000px, -35vw)); /* Level 2 movement */
     }
 }
 
-/* FOR DISPLAYING THE CAR */
-
+/* Car styling - Level 2 (slightly larger car) */
 .car {
     position: absolute;
-    width: 300px;
     left: 20%;
-    bottom: 55px;
     transform: translateX(-50%);
+    z-index: 10;
 
+    /* Level 2 car is slightly larger */
+    width: clamp(160px, 27vw, 300px);
+    bottom: clamp(35px, 8vh, 55px);
+}
+
+.car img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Media Queries for fine-tuning */
+
+/* Small mobile devices */
+@media (max-width: 575.98px) {
+    .background {
+        background-attachment: scroll;
+    }
+
+    #road {
+        height: clamp(60px, 12vh, 100px);
+    }
+
+    #city {
+        height: clamp(80px, 20vh, 150px);
+        bottom: clamp(60px, 12vh, 100px);
+    }
+
+    .car {
+        width: clamp(130px, 32vw, 220px); /* Slightly larger than level 1 */
+        bottom: clamp(25px, 6vh, 40px);
+        left: 15%;
+    }
+
+    /* Adjusted animation speeds for level 2 */
+    #road {
+        animation-duration: 1.8s; /* Faster than level 1 */
+    }
+
+    #city {
+        animation-duration: 11s;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .car {
+        width: clamp(220px, 25vw, 270px);
+        bottom: clamp(40px, 7vh, 50px);
+    }
+
+    #road {
+        height: clamp(100px, 14vh, 130px);
+        animation-duration: 2.2s;
+    }
+
+    #city {
+        height: clamp(150px, 23vh, 200px);
+        bottom: clamp(100px, 14vh, 130px);
+        animation-duration: 13s;
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1024px) {
+    .background {
+        background-attachment: fixed;
+    }
+
+    .car {
+        width: clamp(270px, 22vw, 300px); /* Level 2 car size */
+        bottom: clamp(50px, 7vh, 55px);
+    }
+
+    #road {
+        height: clamp(120px, 12vh, 150px);
+        animation-duration: 2.5s; /* Original level 2 speed */
+    }
+
+    #city {
+        height: clamp(200px, 20vh, 250px);
+        bottom: clamp(120px, 12vh, 150px);
+        animation-duration: 15s;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (orientation: landscape) and (max-height: 600px) {
+    .car {
+        width: clamp(110px, 22vh, 220px);
+        bottom: clamp(20px, 5vh, 35px);
+    }
+
+    #road {
+        height: clamp(40px, 10vh, 80px);
+        animation-duration: 1.8s;
+    }
+
+    #city {
+        height: clamp(60px, 15vh, 120px);
+        bottom: clamp(40px, 10vh, 80px);
+        animation-duration: 11s;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .background {
+        background-image: url(./assests/skylevel2.png);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #road {
+        animation-duration: 8s; /* Much slower for accessibility */
+    }
+    #city {
+        animation-duration: 20s;
+    }
+}
+
+/* Game progression visual cues */
+@media (min-width: 768px) {
+    .car {
+        /* Add subtle glow effect for level 2 on larger screens */
+        filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.3));
+    }
 }

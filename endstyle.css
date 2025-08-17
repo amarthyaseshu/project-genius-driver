@@ -1,10 +1,15 @@
-/* This style sheet is for showing the ending page of game */
+/* Responsive style sheet for the ending page of game */
 
 * {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    box-sizing: border-box;
     font-family: sans-serif;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .end {
@@ -14,36 +19,96 @@
     background-size: cover;
     background-position: center;
     position: relative;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-div>p {
-    padding: 80px;
+.end p {
     text-align: center;
-    font-size: 100px;
     font-weight: bolder;
     color: yellow;
+    margin-bottom: 2rem;
+    /* Responsive font size */
+    font-size: clamp(2rem, 8vw, 6rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for better readability */
+    padding: 0;
 }
 
 #button_ {
     display: inline-block;
-    width: 175px;
+    min-width: 175px;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    padding: 7px;
-    margin-left: 53em;
-    margin-top: 23em;
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    margin: 0 auto;
 }
 
 #button_:hover {
     border: 2px solid green;
     font-weight: bold;
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
 }
 
 #link_ {
     text-decoration: none;
     color: black;
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    display: block;
+    text-align: center;
+}
 
+/* Media Queries */
+
+/* Small mobile devices */
+@media (max-width: 575.98px) {
+    .end {
+        padding: 15px;
+    }
+
+    .end p {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+        margin-bottom: 1.5rem;
+    }
+
+    #button_ {
+        padding: 10px 18px;
+        min-width: 150px;
+    }
+}
+
+/* Medium devices */
+@media (min-width: 768px) {
+    .end {
+        padding: 40px;
+    }
+
+    .end p {
+        font-size: clamp(3rem, 8vw, 5rem);
+        margin-bottom: 2.5rem;
+    }
+
+    #button_ {
+        padding: 15px 25px;
+        min-width: 200px;
+    }
+}
+
+/* Large devices */
+@media (min-width: 1024px) {
+    .end p {
+        font-size: clamp(4rem, 8vw, 6rem);
+        margin-bottom: 3rem;
+    }
+
+    #button_ {
+        padding: 18px 30px;
+        min-width: 220px;
+    }
 }
